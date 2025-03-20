@@ -6,7 +6,7 @@ namespace CosmosDB.Features.Invoices.CreateInvoice
     {
         public static void AddInvoiceFeature(this IServiceCollection services)
         {
-            _ = services.AddScoped<CreateInvoiceDataAccess>();
+            services.AddScoped<CreateInvoiceDataAccess>();
         }
     }
 }

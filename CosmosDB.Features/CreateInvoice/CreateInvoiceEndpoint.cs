@@ -9,7 +9,7 @@ namespace CosmosDB.Features.Invoices.CreateInvoice
     {
         public static void MapEndpoint(WebApplication app)
         {
-            _ = app.MapPost("/api/invoices", async (
+            app.MapPost("/api/invoices", async (
                 CreateInvoiceCommand command,
                 IMediator mediator,
                 IValidator<CreateInvoiceCommand> validator) =>
