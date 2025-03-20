@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmosDB.Invoices.GetInvoiceById
+namespace CosmosDB.Invoices.UpdateInvoiceById
 {
-    internal class GetInvoiceByIdValidation
+    internal class UpdateInvoiceByIdHandler
     {
     }
 }

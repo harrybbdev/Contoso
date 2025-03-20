@@ -10,6 +10,5 @@ namespace CosmosDB.Invoices.CreateInvoice
     {
         public CreateInvoiceDataAccess() { }
 
-        public Task CreateInvoice(Invoice)
     }
 }

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MediatR;
 
-namespace CosmosDB.Invoices.CreateInvoice
+namespace CosmosDB.Invoices.UpdateInvoiceById
 {
-    internal class CreateInvoiceCommand : IRequest<string>
+    internal class UpdateInvoiceByIdValidator
     {
     }
 }
