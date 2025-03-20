@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CosmosDB.Invoices.CreateInvoice
+﻿namespace CosmosDB.Features.Invoices.CreateInvoice
 {
     internal class CreateInvoiceDataAccess
     {
         public CreateInvoiceDataAccess() { }
+
+        public async Task CreateInvoiceAsync(Invoice invoice, CancellationToken cancellationToken)
+        {
+
+        }
 
     }
 }

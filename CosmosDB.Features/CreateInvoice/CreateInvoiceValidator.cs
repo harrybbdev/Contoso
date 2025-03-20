@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
-namespace CosmosDB.Invoices.CreateInvoice
+namespace CosmosDB.Features.Invoices.CreateInvoice
 {
-    internal class CreateInvoiceValidator
+    public class CreateInvoiceValidator : AbstractValidator<CreateInvoiceCommand>
     {
+        public CreateInvoiceValidator()
+        {
+            RuleFor(c => c.Amount).GreaterThan(0).WithMessage("Amount must be greater than zero.");
+        }
     }
 }

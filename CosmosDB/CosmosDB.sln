@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosDB.API", "CosmosDB.API.csproj", "{CCB19E52-D72E-4A16-ABD3-514AB4F61AFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosDB", "CosmosDB.csproj", "{CCB19E52-D72E-4A16-ABD3-514AB4F61AFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosDB.Invoices", "..\CosmosDB.Features\CosmosDB.Invoices.csproj", "{8F3961E2-D4A3-450D-BB30-7E4D849F27CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosDB.Features.Invoices", "..\CosmosDB.Features\CosmosDB.Features.Invoices.csproj", "{8F3961E2-D4A3-450D-BB30-7E4D849F27CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

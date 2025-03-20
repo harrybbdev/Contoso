@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CosmosDB.Invoices.GetInvoiceById
+﻿namespace CosmosDB.Features.Invoices.GetInvoiceById
 {
     internal class GetInvoiceByIdHandler
     {

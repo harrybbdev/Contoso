@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 
-namespace CosmosDB.Invoices.CreateInvoice
+namespace CosmosDB.Features.Invoices.CreateInvoice
 {
-    internal class CreateInvoiceCommand : IRequest<string>
+    public class CreateInvoiceCommand : IRequest<Guid>
     {
+        public decimal Amount { get; set; }
     }
 }

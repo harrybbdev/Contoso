@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CosmosDB.Invoices.UpdateInvoiceById
+﻿namespace CosmosDB.Features.Invoices.UpdateInvoiceById
 {
     internal class UpdateInvoiceByIdValidator
     {

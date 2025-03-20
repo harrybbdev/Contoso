@@ -1,11 +1,28 @@
-var builder = WebApplication.CreateBuilder(args);
+using CosmosDB.Features.Invoices;
+using FluentValidation;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+System.Reflection.Assembly[] featureAssemblies = AppDomain.CurrentDomain
+    .GetAssemblies()
+    .Where(a => a.FullName != null && a.FullName.Contains(".Features.")) // Filter only feature assemblies
+    .ToArray();
+
+builder.Services.AddMediatR(configuration =>
+{
+    configuration.RegisterServicesFromAssemblies(featureAssemblies);
+});
+
+builder.Services.AddValidatorsFromAssemblies(featureAssemblies);
+
+builder.Services.InjectInvoicesDependencies();
+
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -16,42 +33,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/GetInvoiceById", () =>
-{
-
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
-app.MapGet("/CreateInvoice", () =>
-{
-
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
-app.MapGet("/DeleteInvoiceById", () =>
-{
-
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
-app.MapGet("/UpdateInvoiceById", () =>
-{
-
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapInvoicesEndpoints();
 
 app.Run();
 
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
