@@ -1,14 +1,22 @@
+using CosmosDB;
 using CosmosDB.Features.Invoices;
 using FluentValidation;
+using Microsoft.Azure.Cosmos;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-System.Reflection.Assembly[] featureAssemblies = AppDomain.CurrentDomain
+var cosmosSettings = builder.Configuration.GetSection("CosmosDb").Get<CosmosDbSettings>();
+builder.Services
+    .AddSingleton(cosmosSettings!)
+    .AddSingleton(sp =>
+        new CosmosClient(cosmosSettings!.AccountEndpoint, cosmosSettings.AccountKey));
+
+var featureAssemblies = AppDomain.CurrentDomain
     .GetAssemblies()
     .Where(a => a.FullName != null && a.FullName.Contains(".Features.")) // Filter only feature assemblies
     .ToArray();
@@ -16,13 +24,11 @@ System.Reflection.Assembly[] featureAssemblies = AppDomain.CurrentDomain
 builder.Services.AddMediatR(configuration =>
 {
     configuration.RegisterServicesFromAssemblies(featureAssemblies);
-});
+})
+.AddValidatorsFromAssemblies(featureAssemblies)
+.InjectInvoicesDependencies();
 
-builder.Services.AddValidatorsFromAssemblies(featureAssemblies);
-
-builder.Services.InjectInvoicesDependencies();
-
-WebApplication app = builder.Build();
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

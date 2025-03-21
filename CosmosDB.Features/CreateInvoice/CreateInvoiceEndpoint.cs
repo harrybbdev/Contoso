@@ -14,13 +14,13 @@ namespace CosmosDB.Features.Invoices.CreateInvoice
                 IMediator mediator,
                 IValidator<CreateInvoiceCommand> validator) =>
             {
-                FluentValidation.Results.ValidationResult validationResult = await validator.ValidateAsync(command);
+                var validationResult = await validator.ValidateAsync(command);
                 if (!validationResult.IsValid)
                 {
                     return Results.BadRequest(validationResult.Errors);
                 }
 
-                Guid id = await mediator.Send(command);
+                var id = await mediator.Send(command);
                 return Results.Created($"/api/invoices/{id}", new { id });
             })
             .WithName("CreateInvoice")

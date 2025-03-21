@@ -21,7 +21,7 @@ namespace CosmosDB.Features.Invoices.CreateInvoice
 
             await _dataAccess.CreateInvoiceAsync(invoice, cancellationToken);
 
-            return Guid.Empty;
+            return invoice.Id;
         }
     }
 }
