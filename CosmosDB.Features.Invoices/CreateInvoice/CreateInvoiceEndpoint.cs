@@ -11,15 +11,8 @@ namespace CosmosDB.Features.Invoices.CreateInvoice
         {
             app.MapPost("/api/invoices", async (
                 CreateInvoiceCommand command,
-                IMediator mediator,
-                IValidator<CreateInvoiceCommand> validator) =>
+                IMediator mediator) =>
             {
-                var validationResult = await validator.ValidateAsync(command);
-                if (!validationResult.IsValid)
-                {
-                    return Results.BadRequest(validationResult.Errors);
-                }
-
                 var id = await mediator.Send(command);
                 return Results.Created($"/api/invoices/{id}", new { id });
             })

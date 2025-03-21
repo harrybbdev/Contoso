@@ -1,5 +1,6 @@
 ﻿using CosmosDB.Features.Invoices.CreateInvoice;
 using CosmosDB.Features.Invoices.DeleteInvoiceById;
+using CosmosDB.Features.Invoices.GetInvoiceById;
 using Microsoft.AspNetCore.Builder;
 
 namespace CosmosDB.Features.Invoices
@@ -10,6 +11,7 @@ namespace CosmosDB.Features.Invoices
         {
             CreateInvoiceEndpoint.MapEndpoint(app);
             DeleteInvoiceEndpoint.MapEndpoint(app);
+            GetInvoiceByIdEndpoint.MapEndpoint(app);
         }
     }
 }

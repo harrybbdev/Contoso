@@ -18,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CosmosDB.Features\CosmosDB.Features.Invoices.csproj" />
+    <ProjectReference Include="..\CosmosDB.Common\CosmosDb.Common.csproj" />
+    <ProjectReference Include="..\CosmosDB.Features.Invoices\CosmosDB.Features.Invoices.csproj" />
   </ItemGroup>
 
 </Project>
